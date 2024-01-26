@@ -148,7 +148,7 @@ Transform:
   m_GameObject: {fileID: 98199038}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.48, y: 0.01, z: -0.00839797}
+  m_LocalPosition: {x: 0.55, y: 0.01, z: -0.00839797}
   m_LocalScale: {x: 1, y: 2.352941, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -180,7 +180,7 @@ Transform:
   m_GameObject: {fileID: 108486813}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.49, y: 0.089999914, z: -0.03392602}
+  m_LocalPosition: {x: 0.59, y: 0.15, z: -1}
   m_LocalScale: {x: 1, y: 0.425, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -320,7 +320,7 @@ Transform:
   m_GameObject: {fileID: 152556391}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: 2.16, z: 0}
+  m_LocalPosition: {x: -0.28, y: 2.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -368,9 +368,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammoText: {fileID: 1026166176}
   gun: {fileID: 11400000, guid: 73c0b2f698bd3d849b52f8468464b367, type: 2}
-  damage: 0
-  pierce: 0
-  knockback: 0
   canFire: 1
   firePoint: {fileID: 98199039}
   projectilePrefab: {fileID: 2703114057208169787, guid: 2b9eae33769adf34ba7abb159af667b1, type: 3}
@@ -414,7 +411,7 @@ Transform:
   m_GameObject: {fileID: 219893243}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.36, y: -0.064, z: 0.03392602}
+  m_LocalPosition: {x: 0.07, y: -0.2, z: 0.03392602}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

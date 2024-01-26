@@ -11,9 +11,6 @@ public class playerShooting : MonoBehaviour
     public GunData gun; //Gun that the character is using
     static float fireRate; //how many times the character will shoot per second
     float bulletSpeed; // how fast bullet moves
-    public float damage; 
-    public int pierce; //How many enemies shots will go through
-    public float knockback; //amount of knockback delt to enemies
     int mag; //Max Ammo
     int currentAmmo; 
     int projectileCount; // Amount of projectiles fired per shot
@@ -29,8 +26,6 @@ public class playerShooting : MonoBehaviour
 
     void Awake()
     { 
-        damage = gun.damage;
-        pierce = gun.pierce;
         bulletSpeed = gun.bulletSpeed;
         fireRate = gun.fireRate;
         fireRate = 1/fireRate;
@@ -40,7 +35,6 @@ public class playerShooting : MonoBehaviour
         reloadSpeed = gun.reloadSpeed;
         projectileCount = gun.projectileCount;
         spread = gun.spread;
-        knockback = gun.knockback;
         ammoText.text = mag.ToString(); //set up ammo counter
 
     }
@@ -137,27 +131,5 @@ public class playerShooting : MonoBehaviour
         ammoText.text = currentAmmo.ToString(); //update ammo counter
     }
 
-    void weaponSwap(){
-
-        damage = gun.damage;
-        pierce = gun.pierce;
-        bulletSpeed = gun.bulletSpeed;
-        fireRate = gun.fireRate;
-        fireRate = 1/fireRate;
-        mag = gun.mag;
-        currentAmmo = mag;
-        reloadSpeed = gun.reloadSpeed;
-        projectileCount = gun.projectileCount;
-        spread = gun.spread;
-        knockback = gun.knockback;
-        ammoText.text = mag.ToString(); //set up ammo counter
-
-        Debug.Log("swapped");
-    }
-
-    public static void setFireRate(float change){
-        fireRate *= change;
-        Debug.Log(fireRate);
-    }
 
 }
