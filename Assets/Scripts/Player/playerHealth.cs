@@ -4,8 +4,8 @@ using UnityEngine;
 using TMPro;
 public class PlayerHealth : MonoBehaviour
 {
-    float health = 100;
-    float maxHealth = 100;
+    public float health = 100;
+    public float maxHealth = 100;
     bool invincible = false;
 
     public TextMeshProUGUI healthText;
@@ -32,12 +32,14 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    void OnTriggerStay2D(Collider2D other) {
+    void OnCollisionStay2D(Collision2D other){
+        Debug.Log("BRUH");
         if(!invincible){
-
+            Debug.Log("OK");
             if(other.gameObject.tag == "Enemy"){
                 float damage = other.gameObject.GetComponent<EnemyBehavoir>().damage;
                 takeDamage(damage);
+                Debug.Log("OUCH!" + damage);
             }
         }
     }

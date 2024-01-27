@@ -56,6 +56,8 @@ public class playerShooting : MonoBehaviour
 
     //Shooting handler will check if player can fire
    void shootingHandler(){
+    if(PauseMenu.gameIsPaused) return;
+
     if (Input.GetMouseButton(0) && canFire && canReload) // Check if the fire button (left-click) is being pressed/held
         {
 
@@ -73,6 +75,8 @@ public class playerShooting : MonoBehaviour
    }
 
     void reloadHandler(){
+        if(PauseMenu.gameIsPaused) return;
+        
         if(Input.GetKeyDown("r") && canReload){
             reload();
         }

@@ -19,8 +19,10 @@ public class gunRotation : MonoBehaviour
     }
     // Update is called once per frame
     void Update(){
-        Debug.Log(negative);
-        rotationHandler();
+        if(!PauseMenu.gameIsPaused){
+            rotationHandler();
+        }
+        
     }
 
 
