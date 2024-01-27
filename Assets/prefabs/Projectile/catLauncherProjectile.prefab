@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   pierce: 1
-  knockback: 1
+  knockback: 100
   speed: 30
 --- !u!61 &-3244202124603882190
 BoxCollider2D:

@@ -5,6 +5,11 @@ using TMPro;
 
 public class EnemyBehavoir : MonoBehaviour
 {
+
+    /*
+        This script only handles health, taking damage and knockback. It does not handle any movement.
+    */
+
     [SerializeField] private GameObject floatingDamageNumber; // This object will spawn upon the enemy taking damage
     public float health;
     public float damage;
@@ -20,10 +25,10 @@ public class EnemyBehavoir : MonoBehaviour
         gameObject.tag = "Enemy";
     }
 
+    //This method removes health from the enemy. It is called in Bullet.
     public void takeDamage(float incomingDamage, float knockback){
         health-=incomingDamage;
         ShowDamage(incomingDamage.ToString());
-         takeKnockback(knockback);
         if(health <=0 ){
             die();
         }
@@ -33,6 +38,7 @@ public class EnemyBehavoir : MonoBehaviour
         Destroy(gameObject);
     }
 
+    
     void ShowDamage(string damageText){
         if(floatingDamageNumber){
             Vector3 variation = new Vector3(Random.Range(-0.5f,0.5f),-0.3f,0);
@@ -40,13 +46,15 @@ public class EnemyBehavoir : MonoBehaviour
             prefab.GetComponentInChildren<TextMeshPro>().text = damageText;
         }
     }
+    
 
-
+    /*
     void takeKnockback(float knockback){
         GameObject player = GameObject.FindWithTag("Player");
         knockback = knockback * knockbackResistance;
 
         if(player){
+            Debug.Log("SUP");
             Vector2 direction = (transform.position - player.transform.position).normalized;
             rb.AddForce(direction * knockback, ForceMode2D.Impulse);
             Invoke("ResetVelocity", 0.2f);
@@ -57,4 +65,6 @@ public class EnemyBehavoir : MonoBehaviour
     void ResetVelocity(){
         rb.velocity = new Vector2(0,0);
     }
+
+    */
 }

@@ -18,6 +18,11 @@ public class gunRotation : MonoBehaviour
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
         Vector2 lookDirection = mousePos - rb.position;
         angle = Mathf.Atan2(lookDirection.y, lookDirection.x) *Mathf.Rad2Deg;
+        if(angle > 90 || angle < -90){
+            transform.GetChild(0).GetComponent<SpriteRenderer>().flipY = true;
+        } else {
+            transform.GetChild(0).GetComponent<SpriteRenderer>().flipY = false;
+        }
         transform.rotation = Quaternion.Euler(0.0f, 0.0f, angle);
         
     }

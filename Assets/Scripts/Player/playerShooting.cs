@@ -44,8 +44,6 @@ public class playerShooting : MonoBehaviour
         switchWeaponData(pistolData);
         mainCamera = Camera.main; // Get the main camera in the scene
         transform = this.gameObject.GetComponent<Transform>(); 
-
-        Invoke("switchToCatLauncher", 2f);
        
     }
 
@@ -54,7 +52,6 @@ public class playerShooting : MonoBehaviour
         shootingHandler();
 
         reloadHandler();
-        Debug.Log(firePoint.position.x);
     }
 
     //Shooting handler will check if player can fire
@@ -171,9 +168,6 @@ public class playerShooting : MonoBehaviour
 
         //Sets the new spawn point for projectiles to the new weapon's second child, which should be it's firepoint
         firePoint = newWeapon.transform.GetChild(0).transform.GetChild(0).gameObject.transform;
-
-        Debug.Log("YAY");
-       
         
     }
 

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: catLauncher
   m_EditorClassIdentifier: 
   fireRate: 1
-  bulletSpeed: 20
+  bulletSpeed: 15
   mag: 4
   reloadSpeed: 2
-  projectileCount: 0
+  projectileCount: 1
   spread: 0
