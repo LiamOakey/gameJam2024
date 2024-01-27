@@ -154,7 +154,10 @@ public class playerShooting : MonoBehaviour
 
 
     //This method switches the active sprite with the new sprite
-    void switchWeapon(GameObject newWeapon){
+    void switchWeapon(GameObject newWeapon, GunData weaponData, GameObject projectile){
+
+        switchWeaponData(weaponData);
+        currentProjectile = projectile;
 
         //Deletes all children/sprite
         foreach (Transform child in transform) {
@@ -176,16 +179,16 @@ public class playerShooting : MonoBehaviour
 
 
     //Below are the weapon switch statements
+    //Inputs follow as (weapon object, weapon data, weapon projectile)
+
     void switchToMinigun(){
-        switchWeaponData(minigunData);
-        currentProjectile = minigunProjectile;
-        switchWeapon(catLauncher);
+        switchWeapon(catLauncher, minigunData, minigunProjectile);
     }
 
 
     void switchToCatLauncher(){
-        switchWeaponData(catLauncherData);
-        switchWeapon(catLauncher);
-        currentProjectile = catLauncherProjectile;
+        switchWeapon(catLauncher, catLauncherData, catLauncherProjectile);
     }
+
+
 }
