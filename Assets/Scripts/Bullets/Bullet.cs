@@ -7,6 +7,8 @@ public class Bullet : MonoBehaviour
     public float damage;
     public float pierce;
     public float knockback;
+    public float speed;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -27,6 +29,7 @@ public class Bullet : MonoBehaviour
             pierce--;
         }
     }
+
 
     
 }

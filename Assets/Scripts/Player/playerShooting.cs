@@ -10,7 +10,6 @@ public class playerShooting : MonoBehaviour
 
     public GunData gun; //Gun that the character is using
     static float fireRate; //how many times the character will shoot per second
-    float bulletSpeed; // how fast bullet moves
     int mag; //Max Ammo
     int currentAmmo; 
     int projectileCount; // Amount of projectiles fired per shot
@@ -26,7 +25,6 @@ public class playerShooting : MonoBehaviour
 
     void Awake()
     { 
-        bulletSpeed = gun.bulletSpeed;
         fireRate = gun.fireRate;
         fireRate = 1/fireRate;
         mainCamera = Camera.main; // Get the main camera in the scene
@@ -86,6 +84,7 @@ public class playerShooting : MonoBehaviour
     {
         
         GameObject projectile; //Bullet
+        float bulletSpeed = projectilePrefab.GetComponent<Bullet>().speed;
 
         Vector3 mousePosition = Input.mousePosition; // Get the mouse position in screen coordinates
         
