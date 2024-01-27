@@ -35,6 +35,11 @@ public class playerShooting : MonoBehaviour
     public GameObject catLauncherProjectile;
     public GameObject catLauncher;
 
+    //Chicken
+    public GunData chickenData;
+    public GameObject chickenProjectile;
+    public GameObject chicken;
+
 
     private Camera mainCamera; // The main camera in the scene
     private Transform transform;
@@ -44,6 +49,8 @@ public class playerShooting : MonoBehaviour
         switchWeaponData(catLauncherData);
         mainCamera = Camera.main; // Get the main camera in the scene
         transform = this.gameObject.GetComponent<Transform>(); 
+
+        Invoke("switchToChicken", 2f);
        
     }
 
@@ -60,8 +67,10 @@ public class playerShooting : MonoBehaviour
 
     if (Input.GetMouseButton(0) && canFire && canReload) // Check if the fire button (left-click) is being pressed/held
         {
+            
 
             if(currentAmmo>0){
+                Debug.Log("BRUHJ");
                 Fire(); // Call the Shoot method to spawn a projectile
                 canFire = false;
                 Invoke("shotReset", fireRate);
@@ -76,7 +85,7 @@ public class playerShooting : MonoBehaviour
 
     void reloadHandler(){
         if(PauseMenu.gameIsPaused) return;
-        
+
         if(Input.GetKeyDown("r") && canReload){
             reload();
         }
@@ -93,7 +102,6 @@ public class playerShooting : MonoBehaviour
 
     void Shoot()
     {
-        
         GameObject projectile; //Bullet
         float bulletSpeed = currentProjectile.GetComponent<Bullet>().speed;
 
@@ -113,12 +121,10 @@ public class playerShooting : MonoBehaviour
         direction.x += shotSpread;
         shotSpread = Random.Range(-spread,spread);
         direction.y += shotSpread;
-        
-
+    
 
         // Spawn a new projectile at the fire point and rotates it
         projectile = Instantiate(currentProjectile, firePoint.position, Quaternion.Euler(0,0,gunRotation.angle));
-
 
         projectile.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
     }
@@ -186,6 +192,10 @@ public class playerShooting : MonoBehaviour
 
     void switchToCatLauncher(){
         switchWeapon(catLauncher, catLauncherData, catLauncherProjectile);
+    }
+
+    void switchToChicken(){
+        switchWeapon(chicken, chickenData, chickenProjectile);
     }
 
 
