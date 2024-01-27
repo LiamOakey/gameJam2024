@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     public float health = 100;
     public float maxHealth = 100;
     bool invincible = false;
 
-    public TextMeshProUGUI healthText;
     BoxCollider2D collider;
+    public Slider healthSlider;
 
     private void Awake() {
         collider = GetComponent<BoxCollider2D>();
@@ -22,9 +22,8 @@ public class PlayerHealth : MonoBehaviour
         invincible = true;
         Invoke("resetInvincible", 0.2f);
         health -= damage;
+        healthSlider.value = health;
 
-        //health text update
-        healthText.text = health.ToString();
 
         //death check
         if(health < 1){
