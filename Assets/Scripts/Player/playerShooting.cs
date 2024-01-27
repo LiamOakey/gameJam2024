@@ -8,43 +8,50 @@ public class playerShooting : MonoBehaviour
 {
     public TextMeshProUGUI ammoText;
 
-    public GunData gun; //Gun that the character is using
+    /* These variables will hold the information of the currently equiped weapon. To swap weapons the variables will be switched to the data of another weapon*/
     static float fireRate; //how many times the character will shoot per second
     int mag; //Max Ammo
     int currentAmmo; 
     int projectileCount; // Amount of projectiles fired per shot
     float reloadSpeed; // time in seconds
     float spread; //Random variation on the y axis for shots
+    public GameObject currentProjectile; // The projectile prefab to be spawned
 
     public bool canFire = true;
     bool canReload = true;
     public Transform firePoint; // The position where the projectile will be spawned
-    public GameObject projectilePrefab; // The projectile prefab to be spawned
+
+
+    /*Below is a list of gunData and a projectile for each weapon. Gundata describes variables like shooting rate and spread, projectile stores damage and speed.*/
+    public GunData pistol; //Gun that the character is using
+    public GameObject pistolProjectile;
+
+    public GunData minigun;
+    public GameObject minigunProjectile;
 
     private Camera mainCamera; // The main camera in the scene
 
     void Awake()
     { 
-        fireRate = gun.fireRate;
+        currentProjectile = pistolProjectile;
+        fireRate = pistol.fireRate;
         fireRate = 1/fireRate;
         mainCamera = Camera.main; // Get the main camera in the scene
-        mag = gun.mag;
+        mag = pistol.mag;
         currentAmmo = mag;
-        reloadSpeed = gun.reloadSpeed;
-        projectileCount = gun.projectileCount;
-        spread = gun.spread;
+        reloadSpeed = pistol.reloadSpeed;
+        projectileCount = pistol.projectileCount;
+        spread = pistol.spread; 
         ammoText.text = mag.ToString(); //set up ammo counter
 
+        Invoke("switchToMinigun",5f);
     }
 
     void Update()
     {
-
         shootingHandler();
 
         reloadHandler();
-
-
     }
 
     //Shooting handler will check if player can fire
@@ -84,7 +91,7 @@ public class playerShooting : MonoBehaviour
     {
         
         GameObject projectile; //Bullet
-        float bulletSpeed = projectilePrefab.GetComponent<Bullet>().speed;
+        float bulletSpeed = currentProjectile.GetComponent<Bullet>().speed;
 
         Vector3 mousePosition = Input.mousePosition; // Get the mouse position in screen coordinates
         
@@ -105,9 +112,9 @@ public class playerShooting : MonoBehaviour
         
 
 
-        // Spawn a new projectile at the fire point
-        projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
-        projectile.GetComponent<Rigidbody2D>().rotation = gunRotation.angle;
+        // Spawn a new projectile at the fire point and rotates
+        projectile = Instantiate(currentProjectile, firePoint.position, Quaternion.Euler(0,0,gunRotation.angle));
+
 
         projectile.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
     }
@@ -128,6 +135,19 @@ public class playerShooting : MonoBehaviour
         currentAmmo = mag;
         canFire = true;
         ammoText.text = currentAmmo.ToString(); //update ammo counter
+    }
+
+
+    void switchToMinigun(){
+        currentProjectile = minigunProjectile;
+        fireRate = minigun.fireRate;
+        fireRate = 1/minigun.fireRate;
+        mag = minigun.mag;
+        currentAmmo = minigun.mag;
+        reloadSpeed = minigun.reloadSpeed;
+        projectileCount = minigun.projectileCount;
+        spread = minigun.spread;
+        ammoText.text = minigun.mag.ToString(); //set up ammo counter
     }
 
 

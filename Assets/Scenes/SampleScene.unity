@@ -367,10 +367,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammoText: {fileID: 1026166176}
-  gun: {fileID: 11400000, guid: 73c0b2f698bd3d849b52f8468464b367, type: 2}
+  currentProjectile: {fileID: 0}
   canFire: 1
   firePoint: {fileID: 98199039}
-  projectilePrefab: {fileID: 2703114057208169787, guid: 2b9eae33769adf34ba7abb159af667b1, type: 3}
+  pistol: {fileID: 11400000, guid: 73c0b2f698bd3d849b52f8468464b367, type: 2}
+  pistolProjectile: {fileID: 2703114057208169787, guid: 2b9eae33769adf34ba7abb159af667b1, type: 3}
+  minigun: {fileID: 11400000, guid: f091b93ed3eea9a47a853c01c3f50f0c, type: 2}
+  minigunProjectile: {fileID: 351864376673592698, guid: e9fcb8edcc0172b45a8404faa58ab03e, type: 3}
 --- !u!114 &152556397
 MonoBehaviour:
   m_ObjectHideFlags: 0
