@@ -126,8 +126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb23a0387cb62d449a4f2f7924c1ad14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  pierce: 1
+  damage: 100
+  pierce: 2
   knockback: 100
   speed: 30
 --- !u!61 &-3244202124603882190

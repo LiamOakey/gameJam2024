@@ -41,7 +41,7 @@ public class playerShooting : MonoBehaviour
 
     void Awake()
     { 
-        switchWeaponData(pistolData);
+        switchWeaponData(catLauncherData);
         mainCamera = Camera.main; // Get the main camera in the scene
         transform = this.gameObject.GetComponent<Transform>(); 
        
