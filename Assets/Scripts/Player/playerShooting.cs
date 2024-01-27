@@ -23,28 +23,30 @@ public class playerShooting : MonoBehaviour
 
 
     /*Below is a list of gunData and a projectile for each weapon. Gundata describes variables like shooting rate and spread, projectile stores damage and speed.*/
-    public GunData pistol; //Gun that the character is using
+    public GunData pistolData; //Gun that the character is using
     public GameObject pistolProjectile;
 
-    public GunData minigun;
+    // Minifun
+    public GunData minigunData;
     public GameObject minigunProjectile;
 
+    //Cat launcher
+    public GunData catLauncherData;
+    public GameObject catLauncherProjectile;
+    public GameObject catLauncher;
+
+
     private Camera mainCamera; // The main camera in the scene
+    private Transform transform;
 
     void Awake()
     { 
-        currentProjectile = pistolProjectile;
-        fireRate = pistol.fireRate;
-        fireRate = 1/fireRate;
+        switchWeaponData(pistolData);
         mainCamera = Camera.main; // Get the main camera in the scene
-        mag = pistol.mag;
-        currentAmmo = mag;
-        reloadSpeed = pistol.reloadSpeed;
-        projectileCount = pistol.projectileCount;
-        spread = pistol.spread; 
-        ammoText.text = mag.ToString(); //set up ammo counter
+        transform = this.gameObject.GetComponent<Transform>(); 
 
-        Invoke("switchToMinigun",5f);
+        Invoke("switchToCatLauncher", 2f);
+       
     }
 
     void Update()
@@ -52,6 +54,7 @@ public class playerShooting : MonoBehaviour
         shootingHandler();
 
         reloadHandler();
+        Debug.Log(firePoint.position.x);
     }
 
     //Shooting handler will check if player can fire
@@ -112,7 +115,7 @@ public class playerShooting : MonoBehaviour
         
 
 
-        // Spawn a new projectile at the fire point and rotates
+        // Spawn a new projectile at the fire point and rotates it
         projectile = Instantiate(currentProjectile, firePoint.position, Quaternion.Euler(0,0,gunRotation.angle));
 
 
@@ -137,18 +140,52 @@ public class playerShooting : MonoBehaviour
         ammoText.text = currentAmmo.ToString(); //update ammo counter
     }
 
-
-    void switchToMinigun(){
-        currentProjectile = minigunProjectile;
-        fireRate = minigun.fireRate;
-        fireRate = 1/minigun.fireRate;
-        mag = minigun.mag;
-        currentAmmo = minigun.mag;
-        reloadSpeed = minigun.reloadSpeed;
-        projectileCount = minigun.projectileCount;
-        spread = minigun.spread;
-        ammoText.text = minigun.mag.ToString(); //set up ammo counter
+    // Switches all current weapon stats to the weapon provided
+    void switchWeaponData(GunData gun){
+        fireRate = gun.fireRate;
+        fireRate = 1/gun.fireRate;
+        mag = gun.mag;
+        currentAmmo = gun.mag;
+        reloadSpeed = gun.reloadSpeed;
+        projectileCount = gun.projectileCount;
+        spread = gun.spread;
+        ammoText.text = gun.mag.ToString(); //set up ammo counter
     }
 
 
+    //This method switches the active sprite with the new sprite
+    void switchWeapon(GameObject newWeapon){
+
+        //Deletes all children/sprite
+        foreach (Transform child in transform) {
+            if(child != null){
+	            GameObject.Destroy(child.gameObject);
+            }
+        }  
+
+        newWeapon = Instantiate(newWeapon, transform.position, Quaternion.identity);
+        newWeapon.transform.parent = transform;
+
+        //Sets the new spawn point for projectiles to the new weapon's second child, which should be it's firepoint
+        firePoint = newWeapon.transform.GetChild(0).transform.GetChild(0).gameObject.transform;
+
+        Debug.Log("YAY");
+       
+        
+    }
+
+
+    //Below are the weapon switch statements
+    void switchToMinigun(){
+        switchWeaponData(minigunData);
+        currentProjectile = minigunProjectile;
+        switchWeapon(catLauncher);
+    }
+
+
+    void switchToCatLauncher(){
+        switchWeaponData(catLauncherData);
+        switchWeapon(catLauncher);
+        currentProjectile = catLauncherProjectile;
+    }
 }
