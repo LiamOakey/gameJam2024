@@ -40,6 +40,21 @@ public class playerShooting : MonoBehaviour
     public GameObject chickenProjectile;
     public GameObject chicken;
 
+    //Pew
+    public GunData pewData;
+    public GameObject pewProjectile;
+    public GameObject pew;
+
+
+    //Audio sources
+    public AudioSource catLauncher1;
+    public AudioSource catLauncher2;
+
+    public AudioSource chicken1;
+    public AudioSource chicken2;
+
+    public AudioSource pew1;
+
 
     private Camera mainCamera; // The main camera in the scene
     private Transform transform;
@@ -50,7 +65,8 @@ public class playerShooting : MonoBehaviour
         mainCamera = Camera.main; // Get the main camera in the scene
         transform = this.gameObject.GetComponent<Transform>(); 
 
-        Invoke("switchToChicken", 2f);
+        Invoke("switchToPew",3f);
+        Invoke("switchToChicken",7f);
        
     }
 
@@ -125,7 +141,11 @@ public class playerShooting : MonoBehaviour
         // Spawn a new projectile at the fire point and rotates it
         projectile = Instantiate(currentProjectile, firePoint.position, Quaternion.Euler(0,0,gunRotation.angle));
 
-        projectile.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
+        projectile.GetComponent<Rigidbody2D>().velocity = (direction * bulletSpeed).normalized * bulletSpeed;
+
+
+        //Handles audio based on equipped weapon
+        playAudio();
     }
 
     void shotReset(){
@@ -182,8 +202,29 @@ public class playerShooting : MonoBehaviour
 
     //Method will check which weapon the player has and play a sound
     void playAudio(){
+        //Cat Launcher
         if(currentProjectile == catLauncherProjectile){
+            int sound = (int)Random.Range(0,2);
+            Debug.Log(sound);
+            if(sound==0){
+                catLauncher1.Play();
+            }else{
+                catLauncher2.Play();
+            }
+        }
 
+        //Chicken
+        if(currentProjectile == chickenProjectile){
+            int sound = (int)Random.Range(0,2);
+            if(sound==0){
+                chicken1.Play();
+            }else{
+                chicken2.Play();
+            }
+        }
+
+        if(currentProjectile == pewProjectile){
+            pew1.Play();
         }
     }
 
@@ -203,5 +244,8 @@ public class playerShooting : MonoBehaviour
         switchWeapon(chicken, chickenData, chickenProjectile);
     }
 
+    void switchToPew(){
+        switchWeapon(pew,pewData,pewProjectile);
+    }
 
 }

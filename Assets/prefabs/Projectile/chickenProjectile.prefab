@@ -130,7 +130,7 @@ MonoBehaviour:
   damage: 50
   pierce: 1
   knockback: 0
-  speed: 15
+  speed: 10
 --- !u!61 &-3244202124603882190
 BoxCollider2D:
   m_ObjectHideFlags: 0
