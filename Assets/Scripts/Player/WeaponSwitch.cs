@@ -7,7 +7,7 @@ using TMPro;
 public class WeaponSwitch : MonoBehaviour
 {
     
-    private static float switchTime = 30f; //Time between weaponswaps
+    private static float switchTime = 20f; //Time between weaponswaps
     private  static float timer = switchTime;
 
     public TextMeshProUGUI timerText;
@@ -40,6 +40,10 @@ public class WeaponSwitch : MonoBehaviour
             
         }
 
+    }
+
+    public static void resetTimer(){
+        timer = switchTime;
     }
 
 

@@ -56,4 +56,9 @@ public class EnemySpawner : MonoBehaviour
         Instantiate(enemy, spawnPoint.transform.GetChild(spawnEnemyNum).transform.position, Quaternion.identity);
         return true;
     }
+
+    public static void reset(){
+        spawnTimer = spawnDelay;
+        hellMode = false;
+    }
 }
