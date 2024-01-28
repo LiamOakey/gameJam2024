@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 4
   bulletSpeed: 15
-  mag: 6
+  mag: 15
   reloadSpeed: 1.5
   projectileCount: 1
   spread: 0.1

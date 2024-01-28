@@ -10,6 +10,11 @@ public class EnemySpawner : MonoBehaviour
     public static float spawnDelay = 2f; //Time between spawns
     public static float spawnTimer = spawnDelay; //Timer that counts down
 
+    void Awake(){
+        spawnEnemy(enemy1);
+        spawnEnemy(enemy1);
+    }
+
     void Update(){
         continuiousSpawn(enemy1);
     }

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 public class PlayerHealth : MonoBehaviour
 {
     public float health = 100;
@@ -48,6 +50,6 @@ public class PlayerHealth : MonoBehaviour
     }
 
     void die(){
-        Debug.Log("YOU DIED");
+        SceneManager.LoadScene ("End");
     }
 }

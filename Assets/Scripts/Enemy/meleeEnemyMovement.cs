@@ -11,10 +11,6 @@ public class MeleeEnemyMovement : MonoBehaviour
 
 
 
-    private void Awake() {
-        animator = gameObject.GetComponent<Animator>();
-    }
-
     private void Update() {
         if(canMove){
 
@@ -25,6 +21,12 @@ public class MeleeEnemyMovement : MonoBehaviour
             if(playerPosition){
                 Vector2 direction = (playerPosition.position - transform.position).normalized;
                 enemyPosition.Translate(direction* movementSpeed *  Time.deltaTime);
+
+                if(direction.x < 0){
+                    gameObject.GetComponent<SpriteRenderer>().flipX = false;
+                } else if(direction.x > 0){
+                    gameObject.GetComponent<SpriteRenderer>().flipX = true;
+                }
             }
 
             

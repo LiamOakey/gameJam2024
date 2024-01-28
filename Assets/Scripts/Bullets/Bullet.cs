@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
     public float knockback;
     public float speed;
 
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -23,6 +24,7 @@ public class Bullet : MonoBehaviour
 
         if(other.gameObject.tag == "Enemy"){
             other.GetComponent<EnemyBehavoir>().takeDamage(damage, knockback);
+
             if(pierce == 1){
                 destroy();
             }

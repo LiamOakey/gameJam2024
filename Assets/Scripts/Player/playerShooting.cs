@@ -23,13 +23,6 @@ public class playerShooting : MonoBehaviour
 
 
     /*Below is a list of gunData and a projectile for each weapon. Gundata describes variables like shooting rate and spread, projectile stores damage and speed.*/
-    public GunData pistolData; //Gun that the character is using
-    public GameObject pistolProjectile;
-
-    // Minifun
-    public GunData minigunData;
-    public GameObject minigunProjectile;
-
     //Cat launcher
     public GunData catLauncherData;
     public GameObject catLauncherProjectile;
@@ -45,6 +38,16 @@ public class playerShooting : MonoBehaviour
     public GameObject pewProjectile;
     public GameObject pew;
 
+    //Banana
+    public GunData bananaData;
+    public GameObject bananaProjectile;
+    public GameObject banana;
+
+    //WaterGun
+    public GunData waterGunData;
+    public GameObject waterGunProjectile;
+    public GameObject waterGun;
+
 
     //Audio sources
     public AudioSource catLauncher1;
@@ -55,18 +58,21 @@ public class playerShooting : MonoBehaviour
 
     public AudioSource pew1;
 
+    public AudioSource waterGun1;
+
+    public AudioSource banana1;
+
+    
 
     private Camera mainCamera; // The main camera in the scene
     private Transform transform;
 
     void Awake()
     { 
-        switchWeaponData(catLauncherData);
         mainCamera = Camera.main; // Get the main camera in the scene
         transform = this.gameObject.GetComponent<Transform>(); 
 
-        Invoke("switchToPew",3f);
-        Invoke("switchToChicken",7f);
+        switchToPew();
        
     }
 
@@ -211,7 +217,7 @@ public class playerShooting : MonoBehaviour
             }else{
                 catLauncher2.Play();
             }
-        }
+        }else
 
         //Chicken
         if(currentProjectile == chickenProjectile){
@@ -221,31 +227,42 @@ public class playerShooting : MonoBehaviour
             }else{
                 chicken2.Play();
             }
-        }
+        } else
 
         if(currentProjectile == pewProjectile){
             pew1.Play();
+        }else
+
+        if(currentProjectile == bananaProjectile){
+            banana1.Play();
         }
+
+        if(currentProjectile == waterGunProjectile){
+            waterGun1.Play();
+        }
+
     }
 
     //Below are the weapon switch statements
     //Inputs follow as (weapon object, weapon data, weapon projectile)
 
-    void switchToMinigun(){
-        switchWeapon(catLauncher, minigunData, minigunProjectile);
-    }
-
-
-    void switchToCatLauncher(){
+    public void switchToCatLauncher(){
         switchWeapon(catLauncher, catLauncherData, catLauncherProjectile);
     }
 
-    void switchToChicken(){
+    public void switchToChicken(){
         switchWeapon(chicken, chickenData, chickenProjectile);
     }
 
-    void switchToPew(){
+    public void switchToPew(){
         switchWeapon(pew,pewData,pewProjectile);
     }
 
+    public void switchToBanana(){
+        switchWeapon(banana,bananaData,bananaProjectile);
+    }
+
+    public void switchToWaterGun(){
+        switchWeapon(waterGun,waterGunData,waterGunProjectile);
+    }
 }

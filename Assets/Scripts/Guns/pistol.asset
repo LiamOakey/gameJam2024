@@ -12,12 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ef0927309506c74e8f6d3d3e9713325, type: 3}
   m_Name: pistol
   m_EditorClassIdentifier: 
-  damage: 10
   fireRate: 2
   bulletSpeed: 20
-  pierce: 1
   mag: 12
-  reloadSpeed: 1
+  reloadSpeed: 1.5
   projectileCount: 1
   spread: 0
-  knockback: 1

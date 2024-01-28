@@ -18,11 +18,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1479334136300933109, guid: d2dfa219fd9b0c54aa201629d5b0f373, type: 3}
       propertyPath: m_Name
-      value: gunRotationPoint (1) Variant
+      value: chicken
       objectReference: {fileID: 0}
     - target: {fileID: 6759150099165694999, guid: d2dfa219fd9b0c54aa201629d5b0f373, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190139498888198900, guid: d2dfa219fd9b0c54aa201629d5b0f373, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190139498888198900, guid: d2dfa219fd9b0c54aa201629d5b0f373, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8190139498888198900, guid: d2dfa219fd9b0c54aa201629d5b0f373, type: 3}
       propertyPath: m_LocalPosition.x
