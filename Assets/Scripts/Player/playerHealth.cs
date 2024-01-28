@@ -47,6 +47,7 @@ public class PlayerHealth : MonoBehaviour
     }
 
     void die(){
+        WeaponSwitch.resetTimer();
         EnemySpawner.reset();
         SceneManager.LoadScene("End");
     }
