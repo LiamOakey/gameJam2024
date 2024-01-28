@@ -31,6 +31,8 @@ public class WeaponSwitch : MonoBehaviour
                 GameObject.FindWithTag("Player").GetComponent<playerShooting>().switchToChicken();
             } else if(nextWeapon == 3){
                 GameObject.FindWithTag("Player").GetComponent<playerShooting>().switchToCatLauncher();
+            }else if(nextWeapon == 4){
+                EnemySpawner.hellMode = true;
             }
 
             nextWeapon++;

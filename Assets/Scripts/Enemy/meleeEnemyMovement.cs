@@ -20,7 +20,7 @@ public class MeleeEnemyMovement : MonoBehaviour
             //Check if playerPosition exists
             if(playerPosition){
                 Vector2 direction = (playerPosition.position - transform.position).normalized;
-                enemyPosition.Translate(direction* movementSpeed *  Time.deltaTime);
+                enemyPosition.Translate((direction* movementSpeed).normalized *  Time.deltaTime);
 
                 if(direction.x < 0){
                     gameObject.GetComponent<SpriteRenderer>().flipX = false;

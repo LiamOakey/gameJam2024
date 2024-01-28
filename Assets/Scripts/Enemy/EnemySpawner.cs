@@ -6,8 +6,9 @@ public class EnemySpawner : MonoBehaviour
 {
     public GameObject spawnPoint; //Parent that holds list of children that are potential spawns
     public GameObject enemy1;
+    public static bool hellMode = false;
     
-    public static float spawnDelay = 2f; //Time between spawns
+    public static float spawnDelay = 1.5f; //Time between spawns
     public static float spawnTimer = spawnDelay; //Timer that counts down
 
     void Awake(){
@@ -17,6 +18,20 @@ public class EnemySpawner : MonoBehaviour
 
     void Update(){
         continuiousSpawn(enemy1);
+        if(hellMode == true){
+            continuiousSpawn(enemy1);
+            continuiousSpawn(enemy1);
+            continuiousSpawn(enemy1);
+            continuiousSpawn(enemy1);
+            continuiousSpawn(enemy1);
+            continuiousSpawn(enemy1);
+            continuiousSpawn(enemy1);
+            continuiousSpawn(enemy1);
+            continuiousSpawn(enemy1);
+            continuiousSpawn(enemy1);
+            continuiousSpawn(enemy1);
+            continuiousSpawn(enemy1);
+        }
     }
 
     void continuiousSpawn(GameObject enemy){

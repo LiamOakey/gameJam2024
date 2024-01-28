@@ -34,13 +34,10 @@ public class PlayerHealth : MonoBehaviour
     }
 
     void OnCollisionStay2D(Collision2D other){
-        Debug.Log("BRUH");
         if(!invincible){
-            Debug.Log("OK");
             if(other.gameObject.tag == "Enemy"){
                 float damage = other.gameObject.GetComponent<EnemyBehavoir>().damage;
                 takeDamage(damage);
-                Debug.Log("OUCH!" + damage);
             }
         }
     }
@@ -50,6 +47,6 @@ public class PlayerHealth : MonoBehaviour
     }
 
     void die(){
-        SceneManager.LoadScene ("End");
+        SceneManager.LoadScene("End");
     }
 }
