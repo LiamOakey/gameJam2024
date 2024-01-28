@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ef0927309506c74e8f6d3d3e9713325, type: 3}
   m_Name: Chicken
   m_EditorClassIdentifier: 
-  fireRate: 3
+  fireRate: 6
   bulletSpeed: 15
-  mag: 5
-  reloadSpeed: 1
+  mag: 6
+  reloadSpeed: 1.5
   projectileCount: 1
   spread: 0.1

@@ -70,7 +70,6 @@ public class playerShooting : MonoBehaviour
             
 
             if(currentAmmo>0){
-                Debug.Log("BRUHJ");
                 Fire(); // Call the Shoot method to spawn a projectile
                 canFire = false;
                 Invoke("shotReset", fireRate);
@@ -181,6 +180,12 @@ public class playerShooting : MonoBehaviour
         
     }
 
+    //Method will check which weapon the player has and play a sound
+    void playAudio(){
+        if(currentProjectile == catLauncherProjectile){
+
+        }
+    }
 
     //Below are the weapon switch statements
     //Inputs follow as (weapon object, weapon data, weapon projectile)
